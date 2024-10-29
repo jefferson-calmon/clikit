@@ -1,0 +1,3 @@
+{
+	"extends": "@jefferson-calmon/eslint-config/node"
+}

@@ -1,0 +1,30 @@
+{
+	"name": "@jefferson-calmon/clikit",
+	"version": "1.0.1",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"pub": "npm run build && npm version minor && npm publish && gt && git push",
+		"pub:dev": "npm run build && npm version patch --no-git-tag-version && npm publish"
+	},
+	"devDependencies": {
+		"@jefferson-calmon/eslint-config": "^1.4.0",
+		"@types/node": "^22.8.1",
+		"eslint": "8",
+		"tsup": "^8.3.5",
+		"typescript": "^5.6.3"
+	},
+	"dependencies": {
+		"@clack/prompts": "^0.7.0",
+		"chalk": "^5.3.0"
+	}
+}
