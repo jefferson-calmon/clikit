@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { chalk } from 'utils/chalk';
-import { writeFile } from 'utils/fs';
+import { createFolderIfNotExists, writeFile } from 'utils/fs';
 import { prompt } from 'utils/prompt';
 
 export interface File {
@@ -24,6 +24,7 @@ export async function createFile(file: File) {
 
 	loading.start(`Criando arquivo ${name} em ${dir}`);
 
+	await createFolderIfNotExists(file.dir);
 	const { error } = await writeFile(path, file.content.trim());
 
 	const message = !error ? 'foi criado com sucesso' : 'falhou ao ser criado';
