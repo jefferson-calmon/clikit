@@ -11,12 +11,14 @@ export interface File {
 }
 
 export async function createFile(file: File) {
-	const loading = (await prompt()).spinner();
+	const prompts = await prompt();
+
+	const loading = prompts.spinner();
 	const color = await chalk();
 
 	const [name, dir, path] = [
 		color.cyan(file.name),
-		color.magenta(file.dir),
+		color.green(file.dir),
 		join(file.dir, file.name),
 	];
 
@@ -27,6 +29,7 @@ export async function createFile(file: File) {
 	const message = !error ? 'foi criado com sucesso' : 'falhou ao ser criado';
 
 	loading.stop(`O arquivo ${name} ${message} em ${dir}`);
+	prompts.log.message(color.red(error));
 
 	return {
 		error,

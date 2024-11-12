@@ -1,6 +1,6 @@
 {
 	"name": "@jefferson-calmon/clikit",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"private": false,
 	"publishConfig": {
 		"access": "public"
@@ -14,7 +14,8 @@
 	"scripts": {
 		"build": "tsup",
 		"pub": "npm run build && npm version minor && npm publish && gt && git push",
-		"pub:dev": "npm run build && npm version patch --no-git-tag-version && npm publish"
+		"pub:dev": "npm run build && npm version patch --no-git-tag-version && npm publish",
+		"test": "tsup src/test.ts --silent --clean && node dist/test.js"
 	},
 	"devDependencies": {
 		"@jefferson-calmon/eslint-config": "^1.4.0",
