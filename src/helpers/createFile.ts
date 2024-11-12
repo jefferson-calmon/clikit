@@ -29,7 +29,7 @@ export async function createFile(file: File) {
 	const message = !error ? 'foi criado com sucesso' : 'falhou ao ser criado';
 
 	loading.stop(`O arquivo ${name} ${message} em ${dir}`);
-	prompts.log.message(color.red(error));
+	if (error) prompts.log.message(color.red(error));
 
 	return {
 		error,
